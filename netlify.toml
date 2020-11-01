@@ -1,4 +1,3 @@
 [build]
-  base    = "docs"
   publish = "docs/_build/ja"
-  command = "sphinx-build . _build/ja"
+  command = "sphinx-build docs/ docs/_build/ja"
