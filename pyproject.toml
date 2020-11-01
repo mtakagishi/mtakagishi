@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "mtakagishi"
+version = "0.1.0"
+description = ""
+authors = ["mtakagishi"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.8.4"
+autopep8 = "^1.5.4"
+pylint = "^2.6.0"
+Sphinx = "^3.2.1"
+sphinx-autobuild = "^2020.9.1"
+sphinx-intl = "^2.0.1"
+pydata-sphinx-theme = "^0.4.1"
+poethepoet = "^0.9.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+doc = "python setup.py doc"
+doc-en = "python setup.py doc_en"
+test = "pytest"
+vet = "python setup.py vet"
+tox = "tox"
+version = "python setup.py --version"
