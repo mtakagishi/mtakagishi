@@ -68,6 +68,6 @@ URLを独自ドメインに変更する
 
 .. [#dns] https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/
 
-.. [#domain]  有料ドメインについてはアフィリエイターの多くが紹介しているので貢献してあげてください。
+.. [#domain]  有料ドメインについてはググってください。
 
 .. |date| date::
