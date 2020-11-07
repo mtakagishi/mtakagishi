@@ -2,6 +2,7 @@
 ノウハウメモ
 ******************
 .. toctree::
-  :maxdepth: 1
-
-  20201105-netlify-sphinx/index
+  :maxdepth: 2
+  
+  netlify-sphinx/index
+  harbor/index

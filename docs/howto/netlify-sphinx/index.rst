@@ -13,6 +13,5 @@ PC操作で作業完結するPythonベースの無料サイトの構築手順で
 	Sphinx
 	github
 	netlify
-	vscode
 
 .. |date| date::
