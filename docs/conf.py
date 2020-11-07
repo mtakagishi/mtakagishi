@@ -21,6 +21,9 @@ project = 'mtakagishi'
 copyright = '2020, mtakagishi'
 author = 'mtakagishi'
 
+# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+# using the given strftime format.
+html_last_updated_fmt = '%Y/%m/%d'
 
 # -- General configuration ---------------------------------------------------
 
