@@ -18,3 +18,9 @@ pip install --user poetry
 poetry config virtualenvs.in-project true
 poetry install
 ```
+
+## sphinx-autobuild
+
+``` bash
+poetry run poe doc
+```
