@@ -8,5 +8,5 @@
   helm/index
   rancher/index
   harbor/index
-  
+  rst/index
 
