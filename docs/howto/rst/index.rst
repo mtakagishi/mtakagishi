@@ -62,9 +62,20 @@ reStructuredTextに関するメモ
 
 リスト
 =================================
-
 箇条書き
--------------
+-------------------------------
+箇条書き::
+
+  * this is
+  * a list
+
+    * with a nested list
+    * and some subitems
+
+  * and here the parent list continues
+
+箇条書き(表示）
+
 * this is
 * a list
 
@@ -74,7 +85,17 @@ reStructuredTextに関するメモ
 * and here the parent list continues
 
 番号付き
--------------
+-------------------------------
+
+番号付き::
+
+  1. This is a numbered list.
+  2. It has two items too.
+
+  #. This is a numbered list.
+  #. It has two items too.
+
+番号付き(表示)
 
 1. This is a numbered list.
 2. It has two items too.
@@ -83,7 +104,26 @@ reStructuredTextに関するメモ
 #. It has two items too.
 
 用語
--------------
+-------------------------------
+
+用語::
+
+  term1
+    Definition 1.
+
+  term2
+    Definition 2, paragraph 1.
+
+    Definition 2, paragraph 2.
+
+  term3 : classifier
+    Definition 3.
+
+  term4 : classifier one : classifier two
+    Definition 4.
+
+用語(表示)
+
 term1
   Definition 1.
 
@@ -99,7 +139,18 @@ term4 : classifier one : classifier two
   Definition 4.
 
 項目リスト
--------------
+-------------------------------
+
+項目リスト::
+
+  :fieldname1: Field content
+  :fieldname12: Field content
+  :fieldname123: Field content
+  :fieldname1234: Field content
+
+
+項目リスト(表示)
+
 :fieldname1: Field content
 :fieldname12: Field content
 :fieldname123: Field content
@@ -117,10 +168,81 @@ term4 : classifier one : classifier two
 =================================
 VSCode拡張
 -------------------------------
+Table Formatter　が便利
+
+:kbd:`Ctrl` + :kbd:`P` から『Table: Format Current』
+
 グリッド
 -------------------------------
+Table Fromatter::
+
+  +
+  ||Mon|Tue|Wed|Thu|Fri|
+  +=
+  |田中|(^^)|(xx)|(xx)|('')|(^^)|
+  +-
+  |鈴木|(^^)|(^^)|('')|(xx)|(^^)|
+  +
+
+フォーマット後::
+
+  +------+------+------+------+------+------+
+  |      | Mon  | Tue  | Wed  | Thu  | Fri  |
+  +======+======+======+======+======+======+
+  | 田中 | (^^) | (xx) | (xx) | ('') | (^^) |
+  +------+------+------+------+------+------+
+  | 鈴木 | (^^) | (^^) | ('') | (xx) | (^^) |
+  +------+------+------+------+------+------+
+
+実際の表示
+
++------+------+------+------+------+------+
+|      | Mon  | Tue  | Wed  | Thu  | Fri  |
++======+======+======+======+======+======+
+| 田中 | (^^) | (xx) | (xx) | ('') | (^^) |
++------+------+------+------+------+------+
+| 鈴木 | (^^) | (^^) | ('') | (xx) | (^^) |
++------+------+------+------+------+------+
+
+
 シンプル
 -------------------------------
+
+Table Fromatter::
+
+  =
+  Input . Output
+  -
+  A B "A or B" A_and_B
+  = = = =
+  False False False False
+  True False True False
+  =
+
+フォーマット後::
+
+  =====  =====  ========  =======
+  Input    .     Output
+  -----  -----  --------  -------
+    A      B    "A or B"  A_and_B
+  =====  =====  ========  =======
+  False  False  False     False
+  True   False  True      False
+  =====  =====  ========  =======
+
+
+実際の表示
+
+=====  =====  ========  =======
+Input    .     Output
+-----  -----  --------  -------
+  A      B    "A or B"  A_and_B
+=====  =====  ========  =======
+False  False  False     False
+True   False  True      False
+=====  =====  ========  =======
+
+
 
 ディレクティブ
 =================================
