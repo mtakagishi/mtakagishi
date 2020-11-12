@@ -466,9 +466,4 @@ menu
 :menuselection:`Title --> Title2` 
 
 
-レンダリング後:
-
-.. image:: ../../_static/logo.png
-
-
 .. |date| date::
