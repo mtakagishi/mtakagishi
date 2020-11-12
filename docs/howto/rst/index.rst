@@ -1,13 +1,7 @@
-#################################################
-rst入門
-#################################################
+##############################
+reStructuredText
+##############################
 Last Updated on |date|
-
-reStructuredTextに関するメモ
-
-*******
-入門
-*******
 
 基本情報
 =================================
@@ -16,6 +10,7 @@ reStructuredTextに関するメモ
 
 参考URL
 =================================
+
 * https://docutils.sphinx-users.jp/docutils/docs/ref/rst/restructuredtext.html
 * https://www.sphinx-doc.org/ja/master/usage/restructuredtext/basics.html
 * https://devguide.python.org/documenting/#additional-markup-constructs
@@ -91,17 +86,16 @@ reStructuredTextに関するメモ
 
   1. This is a numbered list.
   2. It has two items too.
-
-  #. This is a numbered list.
-  #. It has two items too.
+    #. This is a numbered list.
+    #. It has two items too.
 
 番号付き(表示)
 
 1. This is a numbered list.
 2. It has two items too.
 
-#. This is a numbered list.
-#. It has two items too.
+  #. This is a numbered list.
+  #. It has two items too.
 
 用語
 -------------------------------
@@ -158,8 +152,10 @@ term4 : classifier one : classifier two
 
 リンク
 =================================
+
 外部リンク
 -------------------------------
+
 内部リンク
 -------------------------------
 
@@ -275,13 +271,16 @@ image
 
 .. image:: https://unsplash.it/336/280/?random
 
+
 figure
 ------------------------------------
 ディレクティブ表記::
 
-  .. figure:: path
+  .. figure:: /_static/logo.png
   
 レンダリング後:
+
+.. figure:: /_static/logo.png
 
 link
 ------------------------------------
@@ -297,187 +296,124 @@ attention
 ------------------------------------
 ディレクティブ表記::
 
-  .. attention:: text
+  .. attention:: attention
 
 レンダリング後:
 
-.. attention:: text
+.. attention:: attention
 
 note
 ------------------------------------
 ディレクティブ表記::
 
-  .. note:: text
+  .. note:: note
   
 レンダリング後:
 
-.. note:: text
+.. note:: note
 
 
 warning
 ------------------------------------
 ディレクティブ表記::
 
-  .. warning:: text
+  .. warning:: warning
 
 レンダリング後:
 
-.. warning:: text
+.. warning:: warning
 
 
 error
 ------------------------------------
 ディレクティブ表記::
 
-  .. error:: text
+  .. error:: error
   
 レンダリング後:
 
-.. error:: text
+.. error:: error
 
 
 hint
 ------------------------------------
 ディレクティブ表記::
 
-  .. hint:: text
+  .. hint:: hint
   
 レンダリング後:
 
-.. hint:: text
+.. hint:: hint
 
 
 important
 ------------------------------------
 ディレクティブ表記::
 
-  .. important:: text
+  .. important:: important
   
 
 レンダリング後:
 
-.. important:: text
+.. important:: important
 
 
 caution
 ------------------------------------
 ディレクティブ表記::
 
-  .. caution:: text
+  .. caution:: caution
   
 レンダリング後:
 
-.. caution:: text
+.. caution:: caution
 
 
 danger
 ------------------------------------
 ディレクティブ表記::
 
-  .. danger:: text
+  .. danger:: danger
   
 レンダリング後:
 
-.. danger:: text
+.. danger:: danger
 
 
 tip
 ------------------------------------
 ディレクティブ表記::
 
-  .. tip:: text
+  .. tip:: tip
   
 
 レンダリング後:
 
-.. tip:: text
+.. tip:: tip
 
-
-admonition
-------------------------------------
-ディレクティブ表記::
-
-  .. admonition:: text
-  
-
-レンダリング後:
-
-.. admonition:: text
 
 
 rubric
 ------------------------------------
 ディレクティブ表記::
 
-  .. rubric:: text
+  .. rubric:: rubric
   
 
 レンダリング後:
 
-.. rubric:: text
+.. rubric:: rubric
 
-
-doc
-------------------------------------
-ディレクティブ表記::
-
-  :doc:`/text` 
-
-レンダリング後:
-
-:doc:`/text` 
-
-ref
-------------------------------------
-ディレクティブ表記::
-
-  :ref:`Label` 
-
-レンダリング後:
-
-:ref:`Label` 
-
-label
-------------------------------------
-ディレクティブ表記::
-
-  .. _Title:
-  
-  
-
-レンダリング後:
-
-.. _Title:
-
-download
-------------------------------------
-ディレクティブ表記::
-
-  :download:`Title <path>` 
-
-レンダリング後:
-
-:download:`Title <path>` 
-
-numref
-------------------------------------
-ディレクティブ表記::
-
-  :numref:`Title <figure>` 
-
-レンダリング後:
-
-:numref:`Title <figure>` 
 
 math
 ------------------------------------
 ディレクティブ表記::
 
-  :math:`a^5` 
+  :math:`\sqrt{16}` 
 
 レンダリング後:
 
-:math:`a^5` 
+:math:`\sqrt{16}` 
 
 command
 ------------------------------------
@@ -529,16 +465,10 @@ menu
 
 :menuselection:`Title --> Title2` 
 
-literalinclude
-------------------------------------
-ディレクティブ表記::
-
-  .. literalinclude:: path
-  
 
 レンダリング後:
 
-.. literalinclude:: path
+.. image:: ../../_static/logo.png
 
 
 .. |date| date::
