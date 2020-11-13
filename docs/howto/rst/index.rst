@@ -1,5 +1,5 @@
 ##############################
-reStructuredText
+reStructuredText入門
 ##############################
 Last Updated on |date|
 
