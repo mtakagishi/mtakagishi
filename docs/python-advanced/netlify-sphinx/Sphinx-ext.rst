@@ -48,6 +48,11 @@ conf.py::
 gtag.js方式（新）
 -------------------------
 
+.. note:: 
+
+  | htmltitleブロックを拡張する方法を取りました。
+  | "basic/layout.html" からの派生テーマなら同じ方法で行けると思う。
+
 * conf.py の template_path の設定を確認
 * layout.htmlを用意し、template_path配下に作成。
 
