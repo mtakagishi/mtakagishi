@@ -23,3 +23,7 @@ SphinxでMarkdown扱えるように設定する。
 
 このページはMarkdownで記述。  
 うまく表示されてるようなのでOK.
+
+## 参考URL
+
+https://www.sphinx-doc.org/ja/master/usage/markdown.html
