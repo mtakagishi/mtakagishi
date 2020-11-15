@@ -19,8 +19,41 @@ poetry config virtualenvs.in-project true
 poetry install
 ```
 
+## sphinx build
+
+``` bash
+sphinx-build docs/ docs/_build/ja
+```
+
 ## sphinx-autobuild
 
 ``` bash
 poetry run poe doc
+```
+
+## VSCODEのターミナルをgit bashへ
+`terminal.integrated.shell.windows` に "C:\\Program Files\\Git\\bin\\bash.exe" を設定
+
+
+
+## proxy
+
+### pip
+
+```ini:$HOME/pip/pip.ini
+ [global]
+proxy = [user:passwd@]http://proxy:port
+```
+
+### shell
+
+```bash
+export HTTP_PROXY="http://proxy:port"
+export HTTPS_PROXY="http://proxy:port"
+```
+
+### git
+```
+git config --global http.proxy http://proxy:port
+git config --global https.proxy http://proxy:port
 ```
