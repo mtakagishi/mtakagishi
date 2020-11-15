@@ -9,3 +9,4 @@ mtakagishi
   python-basic/index
   python-advanced/index
   ex/index
+  todo/index

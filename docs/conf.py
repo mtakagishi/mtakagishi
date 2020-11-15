@@ -31,6 +31,7 @@ html_last_updated_fmt = '%Y/%m/%d'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.todo'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -61,3 +62,6 @@ html_theme_options = {
     "github_url": "https://github.com/mtakagishi/mtakagishi",
     "twitter_url": "https://twitter.com/taka_pynoob",
 }
+
+[extensions]
+todo_include_todos = True

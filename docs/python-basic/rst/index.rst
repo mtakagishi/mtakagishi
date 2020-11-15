@@ -11,6 +11,7 @@ reStructuredTextとは
 * RST、reST、ReSTなどに略される
 * 役割はマークダウンと同じ。 [#markdown-vs-rst]_
 * Sphinxで使用。設定すればマークダウンも使える
+* docstringでも利用
 
 参考URL
 =================================
