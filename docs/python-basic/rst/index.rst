@@ -3,14 +3,14 @@ reStructuredText入門
 ************************************
 Last Updated on |date|
 
-基本情報
+reStructuredTextとは
 =================================
 * Python製でPythonコミュニティで長年使われている
 * テキストエディタで入力向けに設計されたマークアップ言語
 * HTMLやPDFなどへ出力可能
 * RST、reST、ReSTなどに略される
-* 役割としてはマークダウンと同じ。 [#markdown-vs-rst]_
-
+* 役割はマークダウンと同じ。 [#markdown-vs-rst]_
+* Sphinxで使用。設定すればマークダウンも使える
 
 参考URL
 =================================
@@ -23,9 +23,49 @@ Last Updated on |date|
 セクション
 =================================
 
+rst記述::
+
+  #####
+  Title
+  #####
+
+| 使用可能な文字：\= \- \` \: \' \" \~ \^ \_ \* \+ \# \< \> `
+| タイトル文字の下、または上下につける
+
+スタイルガイドによると以下。
+
+* \# 部: オーバーライン付き
+* \* 章: オーバーライン付き
+* \=, セクション
+* \-, サブセクション
+* \^, サブサブセクション
+* \", パラグラフ
+
+
 パラグラフ
 =================================
-段落の塊は、1行以上の空行で区切る
+文章の塊、段落の塊は、1行以上の空行で区切る。
+
+改行（ラインブロック）
+=================================================
+マークダウンの感覚で文末にスペース2つ入れても改行されない。
+文頭に | を入れる。
+
+ラインブロック::
+
+  | Lend us a couple of bob till Thursday.
+  | I'm absolutely skint.
+  | But I'm expecting a postal order and I can pay you back
+    as soon as it comes.
+  | Love, Ewan.
+
+出力結果
+
+| Lend us a couple of bob till Thursday.
+| I'm absolutely skint.
+| But I'm expecting a postal order and I can pay you back
+  as soon as it comes.
+| Love, Ewan.
 
 
 インラインマークアップ
@@ -45,6 +85,12 @@ Last Updated on |date|
 --------------------------
 \:math\:\`\\sqrt\{16\}\` ⇒ :math:`\sqrt{16}`
 
+キーボード
+--------------------------
+
+\:kbd\:\`shortcut\` 　⇒　:kbd:`shortcut` 
+
+
 リテラルブロック
 =================================
 リテラルブロック\:\:
@@ -54,10 +100,68 @@ Last Updated on |date|
 -------------
 リテラルブロック::
 
-  It is not processed in any way, except
-  that the indentation is removed.
+  リテラルブロック内容
+
+
+コードの挿入
+=================================
+リテラルブロックか、codeディレクティブを使う。codeディレクティブはオプション指定で細かい表現が可能
+
+リテラルブロックの場合
+-----------------------------------
+
+リテラルブロック例::
+
+  Pythonサンプル::
+
+    def factorial(x):
+        if x == 0:
+            return 1
+        else:
+            return x * factorial(x - 1)
+
+出力
+
+Pythonサンプル::
+
+  def factorial(x):
+      if x == 0:
+          return 1
+      else:
+          return x * factorial(x - 1)
+
+
+code-blockディレクティブの場合
+-----------------------------------
+
+code-blockディレクティブ例::
+
+  .. code-block:: python
+    :caption: Pythonサンプル
+    :linenos:
+    :emphasize-lines: 4
+    
+    def factorial(x):
+      if x == 0:
+          return 1
+          # ライン強調テスト
+      else:
+          return x * factorial(x - 1)
+
+出力
+
+.. code-block:: python
+  :caption: Pythonサンプル
+  :linenos:
+  :emphasize-lines: 4
   
-  It can span multiple lines.
+  def factorial(x):
+    if x == 0:
+        return 1
+        # ライン強調テスト
+    else:
+        return x * factorial(x - 1)
+
 
 リスト
 =================================
@@ -90,16 +194,15 @@ Last Updated on |date|
 
   1. This is a numbered list.
   2. It has two items too.
-    #. This is a numbered list.
-    #. It has two items too.
+  #. This is a numbered list.
+  #. It has two items too.
 
 番号付き(表示)
 
 1. This is a numbered list.
 2. It has two items too.
-
-  #. This is a numbered list.
-  #. It has two items too.
+#. This is a numbered list.
+#. It has two items too.
 
 用語
 -------------------------------
@@ -160,21 +263,49 @@ term4 : classifier one : classifier two
 外部リンク
 -------------------------------
 
+外部リンク1::
+
+  `Link text <https://domain.invalid/>`_ 
+
+外部リンク2::
+
+  This is a paragraph that contains `a link`_.
+  .. _a link: https://domain.invalid/
+
 内部リンク
 -------------------------------
+
+内部リンク表現::
+
+  .. _my-reference-label:
+
+  Section to cross-reference
+  --------------------------
+
+  This is the text of the section.
+
+  It refers to the section itself, see :ref:`my-reference-label`.
 
 
 テーブル
 =================================
-VSCode拡張
--------------------------------
-Table Formatter　が便利
+Table Fromatter
+---------------------------------------
+プレーンテキストでの表の表現は、整形が煩雑になるので、VSCODE利用している場合はプラグインが便利
 
-:kbd:`Ctrl` + :kbd:`P` から『Table: Format Current』
+Table Fromatterのインストール
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+VSCODE拡張から Table Formatter をインストール
+
+使用方法
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| 変換前の書式はサンプルに記載
+| :kbd:`Ctrl + P` から『Table: Format Current』
 
 グリッド
 -------------------------------
-Table Fromatter::
+Table Fromatter書式::
 
   +
   ||Mon|Tue|Wed|Thu|Fri|
@@ -208,7 +339,7 @@ Table Fromatter::
 シンプル
 -------------------------------
 
-Table Fromatter::
+Table Fromatter書式::
 
   =
   Input . Output
@@ -248,7 +379,7 @@ True   False  True      False
 
 スニペット
 =================================
-reStructuredText という拡張についているスニペットを紹介
+VSCODE拡張の reStructuredText によるスニペット紹介
 
 code
 ------------------------------------
