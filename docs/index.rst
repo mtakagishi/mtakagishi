@@ -1,10 +1,11 @@
 ############################
 mtakagishi
 ############################
-個人的な勉強メモの記録
+胸張ってPythonできる人って言える人を目指す
 
 .. toctree::
   :maxdepth: 2
   
-  howto/index
-
+  python-basic/index
+  python-advanced/index
+  ex/index

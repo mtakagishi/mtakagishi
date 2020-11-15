@@ -1,12 +1,16 @@
-##############################
+************************************
 reStructuredText入門
-##############################
+************************************
 Last Updated on |date|
 
 基本情報
 =================================
-* RST、reST、ReST
-* Python製
+* Python製でPythonコミュニティで長年使われている
+* テキストエディタで入力向けに設計されたマークアップ言語
+* HTMLやPDFなどへ出力可能
+* RST、reST、ReSTなどに略される
+* 役割としてはマークダウンと同じ。 [#markdown-vs-rst]_
+
 
 参考URL
 =================================
@@ -465,5 +469,8 @@ menu
 
 :menuselection:`Title --> Title2` 
 
+.. rubric:: 注釈
+
+.. [#markdown-vs-rst] https://postd.cc/restructuredtext-vs-markdown-for-technical-documentation/
 
 .. |date| date::
