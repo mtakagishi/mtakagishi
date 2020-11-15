@@ -61,6 +61,7 @@ html_logo = "_static/logo.png"
 html_theme_options = {
     "github_url": "https://github.com/mtakagishi/mtakagishi",
     "twitter_url": "https://twitter.com/taka_pynoob",
+    "google_analytics_id": "G-C5JHRFFKDH",
 }
 
 [extensions]

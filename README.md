@@ -32,9 +32,8 @@ poetry run poe doc
 ```
 
 ## VSCODEのターミナルをgit bashへ
+
 `terminal.integrated.shell.windows` に "C:\\Program Files\\Git\\bin\\bash.exe" を設定
-
-
 
 ## proxy
 
@@ -53,7 +52,8 @@ export HTTPS_PROXY="http://proxy:port"
 ```
 
 ### git
-```
+
+```bash
 git config --global http.proxy http://proxy:port
 git config --global https.proxy http://proxy:port
 ```

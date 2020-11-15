@@ -27,6 +27,19 @@ todoをリストアップする::
 
   .. todolist::
 
+
+Googleアナリティクス設定
+=================================
+
+conf.py::
+
+  html_theme_options = {
+      "google_analytics_id": "UA-XXXXXXX",
+  }
+
+.. attention:: pydata-sphinx-theme 限定
+
+
 マークダウンを扱えるようにする
 ========================================
 .. todo:: マークダウンを扱えるようにする
