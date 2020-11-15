@@ -26,4 +26,4 @@ SphinxでMarkdown扱えるように設定する。
 
 ## 参考URL
 
-https://www.sphinx-doc.org/ja/master/usage/markdown.html
+[Sphinx公式](https://www.sphinx-doc.org/ja/master/usage/markdown.html)
