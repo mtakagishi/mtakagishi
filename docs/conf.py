@@ -31,7 +31,8 @@ html_last_updated_fmt = '%Y/%m/%d'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.todo'
+    'sphinx.ext.todo',
+    'recommonmark'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -57,6 +58,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #
 html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
+html_favicon = "_static/favicon.ico"
 html_logo = "_static/logo.png"
 html_theme_options = {
     "github_url": "https://github.com/mtakagishi/mtakagishi",
@@ -66,3 +68,9 @@ html_theme_options = {
 
 [extensions]
 todo_include_todos = True
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'markdown',
+    '.md': 'markdown',
+}
