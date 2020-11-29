@@ -4,7 +4,7 @@ ToDo
 Todoリスト
 ================
 
-  .. todolist::
+.. todolist::
 
 ToDo
 ================
