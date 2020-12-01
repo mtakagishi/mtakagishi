@@ -12,17 +12,18 @@ Helmとは
 * Open Container Initiative（OCI）準拠
 * CNCFのプロジェクト [#cncf-pj]_
 
-Helmでできること
-==============================
-* Helmチャートの検索
-* Helmチャートのインストール
-* 新チャートのupdaradeや旧チャートへのrollback
-* Helmチャートのアンインストール
-* 独自チャートの作成
-
 Helmライセンス
 ==============================
 Apache License 2.0
+
+Helmのインストール
+==============================
+
+Windows::
+
+  choco install kubernetes-helm
+
+.. tip:: `インストールガイド <https://helm.sh/ja/docs/intro/install/>`_ 
 
 
 注釈
