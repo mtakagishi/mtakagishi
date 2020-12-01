@@ -9,4 +9,9 @@ mtakagishi
   python-basic/index
   python-advanced/index
   ex/index
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  
   todo/index
