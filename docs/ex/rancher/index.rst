@@ -6,7 +6,7 @@ Last Updated on |date|
 RANCHERについて勉強
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
   
   About
   Concepts

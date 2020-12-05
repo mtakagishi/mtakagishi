@@ -8,7 +8,12 @@ mtakagishi
   
   python-basic/index
   python-advanced/index
+
+.. toctree::
+  :maxdepth: 3
+  
   ex/index
+  
 
 .. toctree::
   :maxdepth: 2
