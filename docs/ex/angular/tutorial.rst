@@ -467,7 +467,7 @@ ngIfで分岐を追加
 .. code-block:: html
   :caption: src/app/heroes/heroes.component.html (*ngIf)
   :linenos:
-  :emphasize-lines: 1
+  :emphasize-lines: 10
 
   <h2>My Heroes</h2>
   <ul class="heroes">
@@ -498,53 +498,981 @@ ngIfで分岐を追加
 
 コンポーネント
 ============================================
+
+ここでは、下記のdetail部分をコンポーネント化するのが目標です。
+
+.. code-block:: html
+  :caption: src/app/heroes/heroes.component.html
+  :linenos:
+  :emphasize-lines: 10-
+
+  <h2>My Heroes</h2>
+  <ul class="heroes">
+    <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+  </ul>
+
+  <!-- ここを外に出したい -->
+  <div *ngIf="selectedHero">
+
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+      </label>
+    </div>
+
+  </div>
+
 HeroDetailComponentの作成
 --------------------------------------------
+以下のコマンドで新規コンポーネントを作成::
+
+  $ ng generate component hero-detail
+  CREATE src/app/hero-detail/hero-detail.component.html (26 bytes)
+  CREATE src/app/hero-detail/hero-detail.component.spec.ts (655 bytes)
+  CREATE src/app/hero-detail/hero-detail.component.ts (294 bytes)
+  CREATE src/app/hero-detail/hero-detail.component.css (0 bytes)
+  UPDATE src/app/app.module.ts (601 bytes)
+
+.. tip:: src/app/app.module.ts には自動でhero-detailの記述が追加されます。
+
+
 templateの記述
 --------------------------------------------
-表示
+htmlテンプレートに、外だししたい部分を書き出しておきます。
+
+.. code-block:: html
+  :caption: src/app/hero-detail/hero-detail.component.html
+  :linenos:
+
+  <div *ngIf="selectedHero">
+
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+      </label>
+    </div>
+
+  </div>
+
+この作業で以下のエラーが出ます。
+
+.. figure:: /ex/angular/detail-error.png
+
+次に、typescriptを修正します。
+
+.. code-block:: typescript
+  :caption: src/app/hero-detail/hero-detail.component.ts
+  :linenos:
+  :emphasize-lines: 1,2,10
+  
+  import { Component, OnInit, Input } from '@angular/core';
+  import { Hero } from '../hero'
+
+  @Component({
+    selector: 'app-hero-detail',
+    templateUrl: './hero-detail.component.html',
+    styleUrls: ['./hero-detail.component.css']
+  })
+  export class HeroDetailComponent implements OnInit {
+    @Input() hero: Hero;
+
+    constructor() { }
+
+    ngOnInit(): void {
+    }
+
+  }
+
+.. hint:: 
+
+  * Inputを用意し、別のコンポーネントからバインドされることを待ち構えます。
+  * Inputの詳細 → `@Input() と @Output() プロパティ <https://angular.jp/guide/inputs-outputs>`_ 
+
+
+親テンプレートの修正(コンポーネント化)
 --------------------------------------------
+.. code-block:: html
+  :caption: src/app/heroes/heroes.component.html
+  :linenos:
+  :emphasize-lines: 10-
+
+  <h2>My Heroes</h2>
+  <ul class="heroes">
+    <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+  </ul>
+
+  <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+特に問題なければ、以下のような感じになってるはず。
+
+.. figure:: /ex/angular/hero-detail.png
 
 サービス
 ============================================
 サービスの役割
 --------------------------------------------
+
+ここまで、データの部分をモックで記述していた部分をどうにかしていきます。データをどうやって取得するかという関心を外だしすること。そこでサービスという仕組みを使います。
+
+.. code-block:: typescript
+  :caption: src/app/heroes/heroes.component.ts
+  :linenos:
+  :emphasize-lines: 3
+  
+  import { Component, OnInit } from '@angular/core';
+  import { Hero } from '../hero';
+  import { HEROES } from '../mock-heroes';
+
+  @Component({
+    selector: 'app-heroes',
+    templateUrl: './heroes.component.html',
+    styleUrls: ['./heroes.component.css']
+  })
+  export class HeroesComponent implements OnInit {
+    heroes = HEROES;
+    selectedHero: Hero;
+
+    constructor() { }
+
+    ngOnInit(): void {
+    }
+
+    onSelect(hero: Hero): void{
+      this.selectedHero = hero;
+    }
+  }
+
 サービスの作成
 --------------------------------------------
-サービスの提供
+
+下記コマンドにて作成::
+
+  $ ng generate service hero
+  CREATE src/app/hero.service.spec.ts (347 bytes)
+  CREATE src/app/hero.service.ts (133 bytes)
+
+2ファイルできます。hero.service.tsに修正を入れていきますが、初版は下記状態です。
+
+.. code-block:: typescript
+  :caption: src/app/hero.service.ts
+  :linenos:
+  
+  import { Injectable } from '@angular/core';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class HeroService {
+
+    constructor() { }
+  }
+
+サービスにモックを移動
 --------------------------------------------
-コンポーネントの更新
---------------------------------------------
+
+.. code-block:: typescript
+  :caption: src/app/hero.service.ts
+  :linenos:
+  :emphasize-lines: 2,3,12-14
+  
+  import { Injectable } from '@angular/core';
+  import { Hero } from './hero';
+  import { HEROES } from './mock-heroes';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class HeroService {
+
+    constructor() { }
+
+    getHeroes(): Hero[] {
+      return HEROES;
+    }
+
+  }
+
+.. code-block:: typescript
+  :caption: src/app/heroes/heroes.component.ts
+  :linenos:
+  :emphasize-lines: 3,11,14,24-26
+  
+  import { Component, OnInit } from '@angular/core';
+  import { Hero } from '../hero';
+  import { HeroService } from '../hero.service';
+
+  @Component({
+    selector: 'app-heroes',
+    templateUrl: './heroes.component.html',
+    styleUrls: ['./heroes.component.css']
+  })
+  export class HeroesComponent implements OnInit {
+    heroes: Hero[];
+    selectedHero: Hero;
+
+    constructor(private heroService: HeroService) { }
+
+    ngOnInit(): void {
+      this.getHeroes();
+    }
+
+    onSelect(hero: Hero): void{
+      this.selectedHero = hero;
+    }
+
+    getHeroes(): void {
+      this.heroes = this.heroService.getHeroes();
+    }
+  }
+
 Observableデータ
 --------------------------------------------
-表示
+src/app/heroes/heroes.component.ts::
+
+  this.heroes = this.heroService.getHeroes();
+
+この部分を非同期実装する
+
+.. code-block:: typescript
+  :caption: src/app/hero.service.ts
+  :linenos:
+  :emphasize-lines: 2,12-13
+  
+  import { Injectable } from '@angular/core';
+  import { Observable, of } from 'rxjs';
+  import { Hero } from './hero';
+  import { HEROES } from './mock-heroes';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class HeroService {
+    constructor() { }
+
+    getHeroes(): Observable<Hero[]> {
+      return of(HEROES);
+    }
+
+  }
+
+
+.. code-block:: typescript
+  :caption: src/app/heroes/heroes.component.ts
+  :linenos:
+  :emphasize-lines: 25-26
+  
+  import { Component, OnInit } from '@angular/core';
+  import { Hero } from '../hero';
+  import { HeroService } from '../hero.service';
+
+  @Component({
+    selector: 'app-heroes',
+    templateUrl: './heroes.component.html',
+    styleUrls: ['./heroes.component.css']
+  })
+  export class HeroesComponent implements OnInit {
+    heroes: Hero[];
+    selectedHero: Hero;
+
+    constructor(private heroService: HeroService) { }
+
+    ngOnInit(): void {
+      this.getHeroes();
+    }
+
+    onSelect(hero: Hero): void{
+      this.selectedHero = hero;
+    }
+
+    getHeroes(): void {
+      this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+    }
+  }
+
+.. hint:: プロパティへの代入から、subscripbeによるコールバックに変更
+
+
+メッセージ表示
 --------------------------------------------
-サービスへのメッセージ追加
---------------------------------------------
+
+メッセージコンポーネント追加::
+
+  $ ng generate component messages
+  CREATE src/app/messages/messages.component.html (23 bytes)
+  CREATE src/app/messages/messages.component.spec.ts (640 bytes)
+  CREATE src/app/messages/messages.component.ts (283 bytes)
+  CREATE src/app/messages/messages.component.css (0 bytes)
+  UPDATE src/app/app.module.ts (691 bytes)
+
+メッセージサービス追加::
+
+  $ ng generate service message
+  CREATE src/app/message.service.spec.ts (362 bytes)
+  CREATE src/app/message.service.ts (136 bytes)
+
+追加したメッセージコンポーネントを表示するための修正
+
+.. code-block:: html
+  :caption: src/app/app.component.html
+  :linenos:
+  :emphasize-lines: 3
+  
+  <h1>{{title}}</h1>
+  <app-heroes></app-heroes>
+  <app-messages></app-messages>
+
+メッセージサービスは、コンストラクタは削除して下記のように修正。
+
+.. code-block:: typescript
+  :caption: src/app/message.service.ts
+  :linenos:
+  :emphasize-lines: 7-15
+  
+  import { Injectable } from '@angular/core';
+
+  @Injectable({
+    providedIn: 'root',
+  })
+  export class MessageService {
+    messages: string[] = [];
+
+    add(message: string) {
+      this.messages.push(message);
+    }
+
+    clear() {
+      this.messages = [];
+    }
+  }
+
+このサービスと連携できるようにしていく。まずは、hero.serviceとの連携
+
+.. code-block:: typescript
+  :caption: src/app/hero.service.ts
+  :linenos:
+  :emphasize-lines: 5,11,14
+  
+  import { Injectable } from '@angular/core';
+  import { Observable, of } from 'rxjs';
+  import { Hero } from './hero';
+  import { HEROES } from './mock-heroes';
+  import { MessageService } from './message.service';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class HeroService {
+    constructor(private messageService: MessageService) { }
+
+    getHeroes(): Observable<Hero[]> {
+      this.messageService.add('HeroService: fetched heroes');
+      return of(HEROES);
+    }
+
+  }
+
+追加したメッセージコンポーネントも修正する。
+
+.. code-block:: typescript
+  :caption: src/app/messages/messages.component.ts
+  :linenos:
+  :emphasize-lines: 2,11
+  
+  import { Component, OnInit } from '@angular/core';
+  import { MessageService } from '../message.service';
+
+  @Component({
+    selector: 'app-messages',
+    templateUrl: './messages.component.html',
+    styleUrls: ['./messages.component.css']
+  })
+  export class MessagesComponent implements OnInit {
+
+    constructor(public messageService: MessageService) { }
+
+    ngOnInit(): void {
+    }
+
+  }
+
+これでサービスの変数をコンポーネント経由でバインドできる。
+
+.. code-block:: html
+  :caption: src/app/messages/messages.component.html
+  :linenos:
+  
+  <div *ngIf="messageService.messages.length">
+    <h2>Messages</h2>
+    <button class="clear" (click)="messageService.clear()">clear</button>
+    <div *ngFor='let message of messageService.messages'>{{message}}</div>
+  </div>
+
+これをメインの画面から表示されるように組み込んでいく。
+
+.. code-block:: typescript
+  :caption: src/app/heroes/heroes.component.ts
+  :linenos:
+  :emphasize-lines: 4,16,24
+  
+  import { Component, OnInit } from '@angular/core';
+  import { Hero } from '../hero';
+  import { HeroService } from '../hero.service';
+  import { MessageService} from '../message.service';
+
+  @Component({
+    selector: 'app-heroes',
+    templateUrl: './heroes.component.html',
+    styleUrls: ['./heroes.component.css']
+  })
+  export class HeroesComponent implements OnInit {
+    selectedHero: Hero;
+
+    heroes: Hero[];
+
+    constructor(private heroService: HeroService, private messageService:MessageService) { }
+
+    ngOnInit(): void {
+      this.getHeroes();
+    }
+
+    onSelect(hero: Hero): void{
+      this.selectedHero = hero;
+      this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`)
+    }
+
+    getHeroes(): void {
+      this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+    }
+  }
+
+
+こうなる。Heroを選択する都度、下のメッセージが表示される。
+
+.. figure:: /ex/angular/add-message.png
+
+
 ルーティング
 ============================================
 AppRoutingModule追加
 --------------------------------------------
-RouterOutlet追加
---------------------------------------------
+
+ルーティング用のモジュールを追加します。::
+
+  $ ng generate module app-routing --flat --module=app
+  CREATE src/app/app-routing.module.ts (196 bytes)
+  UPDATE src/app/app.module.ts (770 bytes)
+
+.. tip:: 
+
+  :--flat: 直下にファイルを作ってくれます。
+  :--module=app: AppModuleへの自動追加
+
+初期状態は下記。
+
+.. code-block:: typescript
+  :caption: src/app/app-routing.module.ts (generated)
+  :linenos:
+  
+  import { NgModule } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+
+
+
+  @NgModule({
+    declarations: [],
+    imports: [
+      CommonModule
+    ]
+  })
+  export class AppRoutingModule { }
+
+これを以下のように書き換え
+
+.. code-block:: typescript
+  :caption: src/app/app-routing.module.ts (updated)
+  :linenos:
+  :emphasize-lines: 2-3,5-7,10-11
+  
+  import { NgModule } from '@angular/core';
+  import { RouterModule, Routes } from '@angular/router';
+  import { HeroesComponent } from './heroes/heroes.component';
+
+  const routes = [
+    { path: 'heroes', component: HeroesComponent }
+  ];
+
+  @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }
+
+.. tip:: 
+
+  :path: ブラウザのアドレスバーにある URL にマッチする文字列
+  :component: そのルートに遷移するときにルーターが作成すべきコンポーネント
+
+  →　URLがlocalhost:4200/heroes　のようなアクセスが可能となる。
+
+.. code-block:: html
+  :caption: src/app/app.component.html 
+  :linenos:
+  :emphasize-lines: 2
+  
+  <h1>{{title}}</h1>
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+
+これでURLそのままのときタイトルだけになり、/heroesにアクセスすると一覧が表示されます。
+
+.. figure:: /ex/angular/heroes-routing.png
+
 rouerLink追加
 --------------------------------------------
-Hero詳細への遷移
+.. code-block:: html
+  :caption: src/app/app.component.html 
+  :linenos:
+  :emphasize-lines: 2-4
+  
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/heroes">Heroes</a>
+  </nav>
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+
+.. figure:: /ex/angular/routerLink.png
+
+.. hint:: routerLinkは、RouterLinkディレクティブのためのセレクター
+
+ダッシュボード追加
 --------------------------------------------
+
+コンポーネントの追加::
+
+  $ ng generate component dashboard
+  CREATE src/app/dashboard/dashboard.component.html (24 bytes)
+  CREATE src/app/dashboard/dashboard.component.spec.ts (647 bytes)
+  CREATE src/app/dashboard/dashboard.component.ts (287 bytes)
+  CREATE src/app/dashboard/dashboard.component.css (0 bytes)
+  UPDATE src/app/app.module.ts (864 bytes)
+
+以下の通り修正
+
+.. code-block:: typescript
+  :caption: src/app/dashboard/dashboard.component.ts
+  :linenos:
+  :emphasize-lines: 21
+  
+  import { Component, OnInit } from '@angular/core';
+  import { Hero } from '../hero';
+  import { HeroService } from '../hero.service';
+
+  @Component({
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css']
+  })
+  export class DashboardComponent implements OnInit {
+    heroes: Hero[] = [];
+
+    constructor(private heroService: HeroService) { }
+
+    ngOnInit(): void {
+      this.getHeroes();
+    }
+
+    getHeroes(): void{
+      this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes.slice(1,5));
+    }
+
+  }
+
+.. hint:: 配列を1番目と5番目でスライスし、トップヒーローの4つを返すようにしている（2番目、3番目、4番目、5番目）
+
+.. code-block:: html
+  :caption: src/app/dashboard/dashboard.component.html
+  :linenos:
+  :emphasize-lines: 1
+  
+  <h3>Top Heroes</h3>
+  <div class="grid grid-pad">
+    <a *ngFor="let hero of heroes" class="col-1-4">
+      <div class="module hero">
+        <h4>{{hero.name}}</h4>
+      </div>
+    </a>
+  </div>
+
+.. code-block:: css
+  :caption: src/app/dashboard/dashboard.component.css
+  :linenos:
+  
+  /* DashboardComponent's private CSS styles */
+  [class*='col-'] {
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+  [class*='col-']:last-of-type {
+    padding-right: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  *, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  h3 {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  h4 {
+    position: relative;
+  }
+  .grid {
+    margin: 0;
+  }
+  .col-1-4 {
+    width: 25%;
+  }
+  .module {
+    padding: 20px;
+    text-align: center;
+    color: #eee;
+    max-height: 120px;
+    min-width: 120px;
+    background-color: #3f525c;
+    border-radius: 2px;
+  }
+  .module:hover {
+    background-color: #eee;
+    cursor: pointer;
+    color: #607d8b;
+  }
+  .grid-pad {
+    padding: 10px 0;
+  }
+  .grid-pad > [class*='col-']:last-of-type {
+    padding-right: 20px;
+  }
+  @media (max-width: 600px) {
+    .module {
+      font-size: 10px;
+      max-height: 75px; }
+  }
+  @media (max-width: 1024px) {
+    .grid {
+      margin: 0;
+    }
+    .module {
+      min-width: 60px;
+    }
+  }
+
+.. code-block:: typescript
+  :caption: src/app/app-routing.module.ts
+  :linenos:
+  :emphasize-lines: 4,7,8
+  
+  import { NgModule } from '@angular/core';
+  import { RouterModule, Routes } from '@angular/router';
+  import { HeroesComponent } from './heroes/heroes.component';
+  import { DashboardComponent } from './dashboard/dashboard.component'
+
+  const routes = [
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: DashboardComponent},
+    { path: 'heroes', component: HeroesComponent },
+  ];
+
+  @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }
+
+.. code-block:: html
+  :caption: src/app/app-routing.module.ts
+  :linenos:
+  :emphasize-lines: 3
+  
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/heroes">Heroes</a>
+  </nav>
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+
+ここまで対応すると以下のような画面。Dashboardと、Heroesのリンクが格好悪いのが気になる方は、チュートリアルから「src/app/app.component.css」を先に整備しておくとよいです。
+
+.. figure:: /ex/angular/dashboard.png
+
+HeroesComponentのクリーンアップ
+--------------------------------------------
+onSelect()メソッドとselectedHeroプロパティが使われなくなってるので掃除しておく。
+
+.. code-block:: typescript
+  :caption: src/app/heroes/heroes.component.ts
+  :linenos:
+
+  import { Component, OnInit } from '@angular/core';
+  import { Hero } from '../hero';
+  import { HeroService } from '../hero.service';
+
+  @Component({
+    selector: 'app-heroes',
+    templateUrl: './heroes.component.html',
+    styleUrls: ['./heroes.component.css']
+  })
+  export class HeroesComponent implements OnInit {
+    heroes: Hero[];
+
+    constructor(private heroService: HeroService) { }
+
+    ngOnInit(): void {
+      this.getHeroes();
+    }
+
+    getHeroes(): void {
+      this.heroService.getHeroes()
+        .subscribe(heroes => this.heroes = heroes);
+    }
+  }
+
+
+HeroDetailComponentへのルート整備
+--------------------------------------------
+この部分はチュートリアルは言葉少ないが、多くのファイルでコード変更しないと動くところまでいかない。またここまでくるとファイルも増えており、どのコードを修正しているのかも混乱しがち。チュートリアルにある最終コードを見ながら対応した。
+
+.. tip:: 
+
+  * 引数のためのIDを、JavaScriptで、(+) 演算子は文字列を数値に変換する特性を使っている。
+  * getHeroes（複数形） と　getHero（単数形）　を意識して対応する。
+
+.. code-block:: typescript
+  :caption: src/app/app-routing.module.ts
+  :linenos:
+  :emphasize-lines: 10
+  
+  import { NgModule } from '@angular/core';
+  import { RouterModule, Routes } from '@angular/router';
+  import { HeroesComponent } from './heroes/heroes.component';
+  import { DashboardComponent } from './dashboard/dashboard.component';
+  import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+
+  const routes = [
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'heroes', component: HeroesComponent },
+    { path: 'detail/:id', component: HeroDetailComponent },
+    { path: 'dashboard', component: DashboardComponent},
+  ];
+
+  @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }
+
+.. code-block:: typescript
+  :caption: src/app/hero.service.ts
+  :linenos:
+  :emphasize-lines: 18-21
+  
+  import { Injectable } from '@angular/core';
+  import { Observable, of } from 'rxjs';
+  import { Hero } from './hero';
+  import { HEROES } from './mock-heroes';
+  import { MessageService } from './message.service';
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class HeroService {
+    constructor(private messageService: MessageService) { }
+
+    getHeroes(): Observable<Hero[]> {
+      this.messageService.add('HeroService: fetched heroes');
+      return of(HEROES);
+    }
+
+    getHero(id: number): Observable<Hero> {
+      this.messageService.add(`HeroService: fetched hero id=${id}`);
+      return of(HEROES.find(hero => hero.id === id));
+    }
+  }
+
+.. code-block:: html
+  :caption: src/app/dashboard/dashboard.component.html
+  :linenos:
+  :emphasize-lines: 4
+  
+  <h3>Top Heroes</h3>
+  <div class="grid grid-pad">
+    <a *ngFor="let hero of heroes" class="col-1-4"
+        routerLink="/detail/{{hero.id}}">
+      <div class="module hero">
+        <h4>{{hero.name}}</h4>
+      </div>
+    </a>
+  </div>
+
+.. code-block:: html
+  :caption: src/app/heroes/heroes.component.html
+  :linenos:
+  :emphasize-lines: 4,6
+  
+  <h2>My Heroes</h2>
+  <ul class="heroes">
+    <li *ngFor="let hero of heroes">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+    </li>
+  </ul>
+
 
 サーバ通信
 ============================================
-HTTPサービス有効化
---------------------------------------------
 シミュレーションサーバ
 --------------------------------------------
-HttpClientでのデータ取得
+In-memory Web APIインストール::
+
+  $ npm install angular-in-memory-web-api --save
+
+  added 1 package, removed 1 package, and audited 1502 packages in 3s
+
+  80 packages are looking for funding
+    run `npm fund` for details
+
+  found 0 vulnerabilities
+
+HTTPサービス有効化
 --------------------------------------------
-データ更新
+HTTPクライアントと、シミュレーションサーバを有効化しておきます。
+
+.. code-block:: typescript
+  :caption: caption
+  :linenos:
+  :emphasize-lines: 4,6-7,23,28-29
+  
+  import { NgModule } from '@angular/core';
+  import { BrowserModule } from '@angular/platform-browser';
+  import { FormsModule } from '@angular/forms';
+  import { HttpClientModule } from '@angular/common/http';
+
+  import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+  import { InMemoryDataService } from './in-memory-data.service';
+
+  import { AppRoutingModule } from './app-routing.module';
+
+  import { AppComponent } from './app.component';
+  import { DashboardComponent } from './dashboard/dashboard.component';
+  import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+  import { HeroesComponent } from './heroes/heroes.component';
+  import { HeroSearchComponent } from './hero-search/hero-search.component';
+  import { MessagesComponent } from './messages/messages.component';
+
+  @NgModule({
+    imports: [
+      BrowserModule,
+      FormsModule,
+      AppRoutingModule,
+      HttpClientModule,
+
+      // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+      // and returns simulated server responses.
+      // Remove it when a real server is ready to receive requests.
+      HttpClientInMemoryWebApiModule.forRoot(
+        InMemoryDataService, { dataEncapsulation: false }
+      )
+    ],
+    declarations: [
+      AppComponent,
+      DashboardComponent,
+      HeroesComponent,
+      HeroDetailComponent,
+      MessagesComponent,
+      HeroSearchComponent
+    ],
+    bootstrap: [ AppComponent ]
+  })
+  export class AppModule { }
+
+in-memory-dataサービスの作成
 --------------------------------------------
-データ作成
---------------------------------------------
-データ削除
---------------------------------------------
-データ検索
---------------------------------------------
+
+サービス作成::
+
+  $ ng generate service InMemoryData
+  CREATE src/app/in-memory-data.service.spec.ts (389 bytes)
+  CREATE src/app/in-memory-data.service.ts (141 bytes)
+
+.. code-block:: typescript
+  :caption: src/app/in-memory-data.service.ts
+  :linenos:
+  :emphasize-lines: 2-3,8-23,30-32
+  
+  import { Injectable } from '@angular/core';
+  import { InMemoryDbService } from 'angular-in-memory-web-api';
+  import { Hero } from './hero';
+
+  @Injectable({
+    providedIn: 'root',
+  })
+  export class InMemoryDataService implements InMemoryDbService {
+    createDb() {
+      const heroes = [
+        { id: 11, name: 'Dr Nice' },
+        { id: 12, name: 'Narco' },
+        { id: 13, name: 'Bombasto' },
+        { id: 14, name: 'Celeritas' },
+        { id: 15, name: 'Magneta' },
+        { id: 16, name: 'RubberMan' },
+        { id: 17, name: 'Dynama' },
+        { id: 18, name: 'Dr IQ' },
+        { id: 19, name: 'Magma' },
+        { id: 20, name: 'Tornado' }
+      ];
+      return {heroes};
+    }
+
+    // Overrides the genId method to ensure that a hero always has an id.
+    // If the heroes array is empty,
+    // the method below returns the initial number (11).
+    // if the heroes array is not empty, the method below returns the highest
+    // hero id + 1.
+    genId(heroes: Hero[]): number {
+      return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+    }
+  }
+
+
+さて、ここでブラウザを更新すれば、表示されるはずなのですが、、、以下のようなメッセージが出て進まなくなりました::
+
+  in-memory-data.service.ts is missing from the TypeScript compilation. Please make sure it is in your tsconfig via the 'files' or 'include' property.
+
+メッセージから、 :kbd:`tsconfig` とやらをいじる必要があるようなのですが…これは、実はこれ、単にサーバを再起動すれば大丈夫。焦った。。。::
+
+  ctr+C で中断
+  ng serve --open
+
+このチュートリアルでは、基本的なCRUD操作と、検索に関するチュートリアルが詰まっている。本メモではこの体験はせず、ここまで。
