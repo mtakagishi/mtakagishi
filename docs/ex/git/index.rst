@@ -32,3 +32,6 @@ Last Updated on |date|
 このワーニングを回避するには::
 
   git config --global core.autoCRLF false
+
+
+.. |date| date::
