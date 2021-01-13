@@ -20,6 +20,15 @@ Last Updated on |date|
 設定関連
 =====================================
 
+httpでcloneして後からsshに変更したい場合
+-----------------------------------------
+状態確認コマンド::
+
+  $ git remote -v
+  
+変更コマンド::
+
+  $ git remote set-url origin git@github.com:user/repo.git
 
 改行コードワーニング対策
 ------------------------------------
@@ -32,6 +41,8 @@ Last Updated on |date|
 このワーニングを回避するには::
 
   git config --global core.autoCRLF false
+
+
 
 
 .. |date| date::
