@@ -7,6 +7,7 @@
 .. toctree::
   :maxdepth: 2
   
+  docker/index
   kubernetes/index
   helm/index
   rancher/index
