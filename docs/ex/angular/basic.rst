@@ -30,15 +30,16 @@ Angular CLIのインストール
 
 以下のコマンドを実行::
 
-  npm install -g @angular/cli
+  sudo npm install -g @angular/cli
 
-.. todo:: 
+Angular CLIのアップグレード方法
+==================================================
 
-  3つのWARNが発生。要調査
+Angular CLIのアップグレードしたいときのコマンド::
 
-  * npm WARN deprecated har-validator@5.1.5: this library is no longer supported
-  * npm WARN deprecated debug@4.2.0: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
-  * npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+  sudo npm uninstall -g angular-cli @angular/cli
+  npm cache clean --force
+  sudo npm install -g @angular/cli
 
 Angular初期化
 ==================================================
