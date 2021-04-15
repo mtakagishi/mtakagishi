@@ -15,6 +15,7 @@
 
 ``` bash
 pip install --user poetry
+poetry config --list
 poetry config virtualenvs.in-project true
 poetry install
 ```
