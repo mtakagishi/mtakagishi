@@ -28,7 +28,8 @@ class DocEnglishCommand(SimpleCommand):
 
 
 setup(
-    use_scm_version=True,
+    # use_scm_version=True, poetryで使えない。
+    # poetry-dynamic-versioningを検討するか諦める。
     cmdclass={
         "doc": DocCommand,
         "doc_en": DocEnglishCommand,

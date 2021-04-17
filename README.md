@@ -15,7 +15,6 @@
 
 [poetryは推奨方法でインストール](https://python-poetry.org/docs/#installation)
 
-
 ## install
 
 ``` bash
