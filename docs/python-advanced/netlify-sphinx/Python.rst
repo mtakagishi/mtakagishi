@@ -11,6 +11,11 @@ poetryのインストール::
 
 	pip install --user poetry
 
+.. hint::
+  poetryインストールは、上記のような方法でもよいが、poetry推奨ではない。
+  poetry推奨方法だとバージョンアップに追随できるため、公式を参照されたい。
+  → `公式インストール <https://python-poetry.org/docs/#installation>`_ 
+
 venv環境を独立するためのconfig確認・設定::
 
 	poetry config --list

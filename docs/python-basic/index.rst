@@ -8,3 +8,4 @@ Python基本
 
   basic/index
   rst/index
+  poetry/index

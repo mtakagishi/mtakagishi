@@ -11,10 +11,14 @@
 
 * "https://mtakagishi.tk/"
 
+## poetry準備
+
+[poetryは推奨方法でインストール](https://python-poetry.org/docs/#installation)
+
+
 ## install
 
 ``` bash
-pip install --user poetry
 poetry config --list
 poetry config virtualenvs.in-project true
 poetry install
