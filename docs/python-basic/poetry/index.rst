@@ -11,7 +11,6 @@ Last Updated on |date|
 基本コマンド
 =============
 :バージョン確認: poetry --version
-:初期化: poetry init
 :設定確認: poetry config --list
 :venv分離: poetry config virtualenvs.in-project true
 :新規PKG: poetry new
