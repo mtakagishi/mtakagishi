@@ -76,3 +76,4 @@ source_suffix = {
 }
 # sphinx-sitemap
 html_baseurl = 'https://mtakagishi.tk/'
+html_extra_path = ['robots.txt']
