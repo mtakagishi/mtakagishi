@@ -1,13 +1,14 @@
 #################################################
-Sphinx拡張
+Sphinx拡張設定
 #################################################
 Last Updated on |date|
 
-Sphinxの拡張関連
-
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
   
   markdown
+  todo
+  analytics
+  sitemap
 
 .. |date| date::

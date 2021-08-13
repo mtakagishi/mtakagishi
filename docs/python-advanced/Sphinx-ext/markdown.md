@@ -1,4 +1,4 @@
-# SphinxでMarkdownを扱う
+# SphinxでMarkdownを扱うには
 
 SphinxでMarkdown扱えるように設定する。  
 
