@@ -32,7 +32,8 @@ html_last_updated_fmt = '%Y/%m/%d'
 # ones.
 extensions = [
     'sphinx.ext.todo',
-    'recommonmark'
+    'recommonmark',
+    'sphinx_sitemap'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -73,3 +74,5 @@ source_suffix = {
     '.txt': 'markdown',
     '.md': 'markdown',
 }
+# sphinx-sitemap
+html_baseurl = 'https://mtakagishi.tk/'
