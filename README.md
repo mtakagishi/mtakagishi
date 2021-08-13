@@ -9,7 +9,7 @@
 
 ## URL
 
-* "https://mtakagishi.tk/"
+* "https://mtakagishi.tk/ja/"
 
 ## poetry準備
 
