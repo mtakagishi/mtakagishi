@@ -6,9 +6,9 @@ Pythonはじめの一歩
 ===================
 
 | `公式ページ <https://www.python.org/>`_ 
-| インストーラなど
+| インストーラなどはこちらから
 
-.. hint:: Anacondaなどディストリビュータ提供のものもある。
+.. hint:: WindowsならMicrosoft StoreからPythonが選択できる。
 
 
 公式ドキュメント
