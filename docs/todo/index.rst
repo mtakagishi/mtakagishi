@@ -13,12 +13,3 @@ ToDo
 | 取り急ぎ場所がなかったTODOはここ
 
 .. todo:: 問合わせの仕組みを作る
-
-.. todo:: vscodeの拡張一覧をまとめておく
-
-.. todo:: vscodeのrstスニペットをまとめる
-
-.. todo:: setup.pyのバージョン取得の件を整理する。
-
-.. todo:: numpyを整理
-
