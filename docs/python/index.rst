@@ -11,3 +11,4 @@ Pythonへ挑戦中
   poetry.rst
   netlify-sphinx/index
   Sphinx-ext/index
+  ipynb.rst

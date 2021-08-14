@@ -26,7 +26,7 @@ poetry install
 ## sphinx build
 
 ``` bash
-sphinx-build docs/ docs/_build/ja
+sphinx-build docs/ docs/_build
 ```
 
 ## sphinx-autobuild
