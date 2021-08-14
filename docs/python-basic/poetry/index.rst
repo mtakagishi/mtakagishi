@@ -21,6 +21,7 @@ Last Updated on |date|
 :開発者PKG追加: poetry add --dev [pkg]
 :GITHUBのPKGを追加: poetry add git+https://github.com/repo/pkg.git
 :PKG削除: poetry remove [pkg]
+:poetry自体のupdate: poetry self update
 
 インストール
 =================
@@ -29,6 +30,14 @@ Last Updated on |date|
 
 .. hint:: :kbd:`pip install --user poetry`  の利用はpoetry self update ができないので注意
 
+基本設定
+====================
+in-projectはTrueにしておくことをオススメ。該当プロジェクトに閉じて管理できる。
+
+venv環境を独立するためのconfig確認・設定::
+
+	poetry config --list
+	poetry config virtualenvs.in-project true
 
 2021/04/17実施
 ---------------
@@ -64,5 +73,15 @@ Last Updated on |date|
 .. hint:: 環境変数などは自動で置き換わる。ターミナルは再起動が必要。
 
 
+2021/08/14 poetry self updateコマンド実行
+------------------------------------------------------------
+1.1.6 から 1.1.7へのself updateですが、エラーとなりました。
+
+.. error:: 
+  
+  ModuleNotFoundError: No module named 'msgpack.exceptions'
+
+.. hint::
+  %USERPROFILE%\.poetry フォルダを削除し、推奨手順で再インストールしたら復旧できました。
 
 .. |date| date::

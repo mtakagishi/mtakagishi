@@ -28,8 +28,9 @@ conf.pyと同じ階層に、robots.txt を配置しておく。
 
 robots.txt::
 
-  User-agent: *
-  Sitemap: https://mtakagishi.tk/sitemap.xml
+  user-agent: *
+  
+  sitemap: https://mtakagishi.tk/sitemap.xml
 
 
 
