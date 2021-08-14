@@ -28,11 +28,14 @@ conf.pyと同じ階層に、robots.txt を配置しておく。
 
 robots.txt::
 
-  user-agent: *
-  
-  sitemap: https://mtakagishi.tk/sitemap.xml
+  User-agent: *
+  Sitemap: https://mtakagishi.tk/sitemap.xml
 
+テスト
+--------------------------------
 
+Google Search Console	の場合、以下でテスト可能です。配置したsitemapが許可されているか確認しましょう。
+https://www.google.com/webmasters/tools/robots-testing-tool
 
 
 .. |date| date::
