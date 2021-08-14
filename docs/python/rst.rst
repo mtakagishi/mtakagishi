@@ -4,13 +4,17 @@ reStructuredText入門
 Last Updated on |date|
 
 reStructuredTextとは
-=================================
+=============================================
+* マークダウンみたいな記述法のPython版
+
+
+reStructuredText特徴
+=============================================
 * Python製でPythonコミュニティで長年使われている
-* テキストエディタで入力向けに設計されたマークアップ言語
 * HTMLやPDFなどへ出力可能
 * RST、reST、ReSTなどに略される
 * 役割はマークダウンと同じ。 [#markdown-vs-rst]_
-* Sphinxで使用。設定すればマークダウンも使える
+* Sphinxで使用。Sphinxは設定すればマークダウンも使える
 * docstringでも利用
 
 参考URL

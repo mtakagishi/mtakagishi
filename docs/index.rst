@@ -9,8 +9,7 @@ mtakagishiのメモ
 .. toctree::
   :maxdepth: 1
   
-  python-basic/index
-  python-advanced/index
+  python/index
   ex/index
 
 .. toctree::
