@@ -1,9 +1,9 @@
 ******************
-ツール
+VSCODE
 ******************
 Last Updated on |date|
 
-ツール類の記事まとめ
+今はVSCODEのみ。VSCODEは便利なテキストエディタ
 
 .. toctree::
   :maxdepth: 1

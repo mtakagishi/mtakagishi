@@ -12,5 +12,5 @@ Last Updated on |date|
   | 意外に重宝するショートカットです。
 
 
-
+  
 .. |date| date::
