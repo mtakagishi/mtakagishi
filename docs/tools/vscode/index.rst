@@ -8,5 +8,6 @@ Last Updated on |date|
   
   textInputFocus
   editorFocus
+  textReturnDisplay
 
 .. |date| date::
