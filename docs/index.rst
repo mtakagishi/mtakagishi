@@ -10,6 +10,7 @@ mtakagishiのメモ
   :maxdepth: 1
   
   python/index
+  tools/index
   ex/index
 
 .. toctree::
