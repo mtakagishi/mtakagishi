@@ -9,6 +9,6 @@ Last Updated on |date|
   markdown
   todo
   analytics
-  sitemap
+  sphinx-sitemap
 
 .. |date| date::
