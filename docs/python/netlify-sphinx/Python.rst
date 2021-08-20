@@ -7,9 +7,7 @@ Python仮想環境準備
 ===========================
 Pythonは事前にインストールしておく。今回は、Python環境をキレイに保つために仮想環境で分離。 `poetry`_ を利用しました。
 
-poetryのインストール::
-
-`インストール手順 <https://python-poetry.org/docs/#installation`_ 
+`インストール手順は本家参照 <https://python-poetry.org/docs/#installation`_ 
 
 .. hint::
   pip install poetry は推奨手順ではないので注意
