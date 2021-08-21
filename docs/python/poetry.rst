@@ -73,15 +73,27 @@ venv環境を独立するためのconfig確認・設定::
 .. hint:: 環境変数などは自動で置き換わる。ターミナルは再起動が必要。
 
 
-2021/08/14 poetry self updateコマンド実行
+poetry self updateコマンド実行
 ------------------------------------------------------------
-1.1.6 から 1.1.7へのself updateですが、エラーとなりました。
-
+1.1.6 から 1.1.7へのself updateが、エラーとなりました。(2021/08/14)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. error:: 
   
   ModuleNotFoundError: No module named 'msgpack.exceptions'
 
 .. hint::
   %USERPROFILE%\.poetry フォルダを削除し、推奨手順で再インストールしたら復旧できました。
+
+
+1.1.7から1.1.8へのself updateが、エラーとなりました。(2021/08/22)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. error:: 
+
+  ModuleNotFoundError: No module named 'crashtest.inspector'
+
+.. hint::
+  | %USERPROFILE%\.poetry フォルダを削除し、推奨手順で再インストールしたら復旧できました。
+  | issueが出てますね。修正待ちです。
+  | https://github.com/python-poetry/poetry/issues/2681
 
 .. |date| date::
