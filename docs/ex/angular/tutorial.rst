@@ -231,7 +231,7 @@ hero.nameのバインディングを修正::
 双方向バインディングできるように修正する。
 
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: app.component.html (template)
   :linenos:
   
@@ -339,7 +339,7 @@ ngForで表示
 
   }
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: app.component.html (template)
   :linenos:
   :emphasize-lines: 3
@@ -464,7 +464,7 @@ ngIfで分岐を追加
 .. figure:: /ex/angular/selectedHero-undefined.png
 
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/heroes/heroes.component.html (*ngIf)
   :linenos:
   :emphasize-lines: 10
@@ -499,7 +499,7 @@ ngIfで分岐を追加
 
 ここでは、下記のdetail部分をコンポーネント化するのが目標です。
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/heroes/heroes.component.html
   :linenos:
   :emphasize-lines: 10-
@@ -544,7 +544,7 @@ templateの記述
 --------------------------------------------
 htmlテンプレートに、外だししたい部分を書き出しておきます。
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/hero-detail/hero-detail.component.html
   :linenos:
 
@@ -908,7 +908,7 @@ src/app/heroes/heroes.component.ts::
 
 これでサービスの変数をコンポーネント経由でバインドできる。
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/messages/messages.component.html
   :linenos:
   
@@ -1103,7 +1103,7 @@ rouerLink追加
 
 .. hint:: 配列を1番目と5番目でスライスし、トップヒーローの4つを返すようにしている（2番目、3番目、4番目、5番目）
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/dashboard/dashboard.component.html
   :linenos:
   :emphasize-lines: 1
@@ -1318,7 +1318,7 @@ HeroDetailComponentへのルート整備
     }
   }
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/dashboard/dashboard.component.html
   :linenos:
   :emphasize-lines: 4
@@ -1333,7 +1333,7 @@ HeroDetailComponentへのルート整備
     </a>
   </div>
 
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/heroes/heroes.component.html
   :linenos:
   :emphasize-lines: 4,6
