@@ -21,7 +21,7 @@ build句を上記のような記載で、proxy環境下ゆえにでビルド都�
 * ビルド実行内部の環境変数としてプロキシを設定
 * docker-compose up --build -d でリビルド立上げでOK
 
-.. code-block:: conf
+.. code-block:: ini
   :caption: .env(新規作成)
   :linenos:
 

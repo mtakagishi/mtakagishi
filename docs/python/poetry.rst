@@ -26,7 +26,7 @@ Last Updated on |date|
 インストール
 =================
 
-`インストール手順 <https://python-poetry.org/docs/#installation`_ 
+`インストール手順 <https://python-poetry.org/docs/#installation>`_ 
 
 .. hint:: :kbd:`pip install --user poetry`  の利用はpoetry self update ができないので注意
 
