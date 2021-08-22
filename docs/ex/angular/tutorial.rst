@@ -597,7 +597,7 @@ htmlテンプレートに、外だししたい部分を書き出しておきま�
 
 親テンプレートの修正(コンポーネント化)
 --------------------------------------------
-.. code-block:: html
+.. code-block:: ng2
   :caption: src/app/heroes/heroes.component.html
   :linenos:
   :emphasize-lines: 10-
