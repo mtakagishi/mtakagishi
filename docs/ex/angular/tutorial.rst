@@ -479,7 +479,7 @@ ngIfで分岐を追加
   </ul>
 
   <div *ngIf="selectedHero">
-
+  
     <h2>{{selectedHero.name | uppercase}} Details</h2>
     <div><span>id: </span>{{selectedHero.id}}</div>
     <div>
