@@ -1,7 +1,7 @@
 ********************************
 Helm概要
 ********************************
-Last Updated on |date|
+Last Updated on 2021-04-17
 
 * Helm公式URL：https://helm.sh/
 * Helm Github: https://github.com/helm/helm

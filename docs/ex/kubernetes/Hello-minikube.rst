@@ -1,6 +1,6 @@
 個人端末でKubernetesに慣れる
 ==============================================
-Last Updated on |date|
+Last Updated on 2021-04-17
 
 .. |date| date::
 

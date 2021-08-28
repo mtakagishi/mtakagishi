@@ -1,7 +1,7 @@
 ********************************
 プロジェクト操作
 ********************************
-Last Updated on |date|
+Last Updated on 2021-04-17
 
 https://goharbor.io/docs/2.1.0/working-with-projects/
 

@@ -1,7 +1,7 @@
 ********************************
 Harbor概要
 ********************************
-Last Updated on |date|
+Last Updated on 2021-04-17
 
 Harbor公式URL：https://goharbor.io/
 

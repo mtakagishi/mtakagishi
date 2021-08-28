@@ -1,7 +1,7 @@
 ********************************
 RANCHER概要
 ********************************
-Last Updated on |date|
+Last Updated on 2021-04-17
 
 * Rancher公式URL：https://www.rancher.co.jp/
 * github: https://github.com/rancher/rancher
