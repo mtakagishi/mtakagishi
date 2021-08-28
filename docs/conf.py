@@ -65,7 +65,9 @@ html_theme_options = {
     "github_url": "https://github.com/mtakagishi/mtakagishi",
     "twitter_url": "https://twitter.com/taka_pynoob",
     "google_analytics_id": "UA-183061927-2",
+    "navbar_end": ["navbar-icon-links.html", "search-field.html"],
 }
+
 
 [extensions]
 todo_include_todos = True
