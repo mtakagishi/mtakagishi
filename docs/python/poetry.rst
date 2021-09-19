@@ -96,9 +96,10 @@ poetry self update 履歴
 
 .. hint::
   | 復旧手順
+
   * %USERPROFILE%\.poetry フォルダを削除
-  * 推奨手順のインストールを実行::
-  
+  * 推奨手順のインストールを実行
+
   (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
 
 1.1.7から1.1.8(2021/08/22)
