@@ -1,46 +1,27 @@
 ******************************************************
-Poetryパッケージ管理
+Poetryを使ったパッケージ管理
 ******************************************************
-Last Updated on 2021-08-22
+Last Updated on 2021-09-19
 
 仮想環境+パッケージ管理ツール
 
 `公式サイト <https://python-poetry.org/>`_ 
 
-
-基本コマンド
-=============
-:バージョン確認: poetry --version
-:設定確認: poetry config --list
-:venv分離: poetry config virtualenvs.in-project true
-:新規PKG: poetry new
-:pyproject.toml作成: poetry init
-:pyproject.tomlベースにinstall: poetry installpo
-:依存PKGを最新化: poetry update
-:PKG追加: poetry add [pkg]
-:開発者PKG追加: poetry add --dev [pkg]
-:GITHUBのPKGを追加: poetry add git+https://github.com/repo/pkg.git
-:PKG削除: poetry remove [pkg]
-:poetry自体のupdate: poetry self update
-
 インストール
 =================
 
-`インストール手順 <https://python-poetry.org/docs/#installation>`_ 
+公式HPにインストールコマンドがあるのでターミナルから実行します。
 
-.. hint:: :kbd:`pip install --user poetry`  の利用はpoetry self update ができないので注意
+`公式HPのインストール手順へ <https://python-poetry.org/docs/#installation>`_ 
 
-基本設定
-====================
-in-projectはTrueにしておくことをオススメ。該当プロジェクトに閉じて管理できる。
+.. hint::
+  :kbd:`pip install --user poetry`  の利用は非推奨。
+  非推奨手順ではself update が利用できない。
 
-venv環境を独立するためのconfig確認・設定::
+2021/04/17実施のインストール記録
+---------------------------------------------
+実際にインストールした時のログ
 
-	poetry config --list
-	poetry config virtualenvs.in-project true
-
-2021/04/17実施
----------------
 インストールコマンド::
 
   PS C:\WINDOWS\system32> (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
@@ -72,28 +53,71 @@ venv環境を独立するためのconfig確認・設定::
 
 .. hint:: 環境変数などは自動で置き換わる。ターミナルは再起動が必要。
 
+基本コマンド
+=============
+:バージョン確認: poetry --version
+:設定確認: poetry config --list
+:venv分離: poetry config virtualenvs.in-project true
+:新規PKG: poetry new
+:pyproject.toml作成: poetry init
+:pyproject.tomlベースにinstall: poetry installpo
+:依存PKGを最新化: poetry update
+:PKG追加: poetry add [pkg]
+:開発者PKG追加: poetry add --dev [pkg]
+:GITHUBのPKGを追加: poetry add git+https://github.com/repo/pkg.git
+:PKG削除: poetry remove [pkg]
+:poetry自体のupdate: poetry self update
 
-poetry self updateコマンド実行
-------------------------------------------------------------
-1.1.6 から 1.1.7へのself updateが、エラーとなりました。(2021/08/14)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+基本設定
+====================
+in-projectはTrueにしておくと該当プロジェクトに閉じた影響範囲でパッケージ管理できるのでオススメです。
+
+venv環境を独立するためのconfig確認・設定::
+
+	poetry config --list
+	poetry config virtualenvs.in-project true
+
+poetry self update 履歴
+==============================================================================
+非推奨インストール方法ではself updateがNG。
+しかし推奨インストールでもself updateがerrorとなった。
+そこで対処法のメモを記録しておく。
+
+環境::
+
+  Windows 10 Pro 20H2
+  Python 3.9.7
+
+1.1.6から1.1.7(2021/08/14)
+-------------------------------------------------------
 .. error:: 
+  | ModuleNotFoundError: No module named 'msgpack.exceptions'
+
+.. hint::
+  | 復旧手順
+  * %USERPROFILE%\.poetry フォルダを削除
+  * 推奨手順のインストールを実行::
   
-  ModuleNotFoundError: No module named 'msgpack.exceptions'
+  (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
 
-.. hint::
-  %USERPROFILE%\.poetry フォルダを削除し、推奨手順で再インストールしたら復旧できました。
-
-
-1.1.7から1.1.8へのself updateが、エラーとなりました。(2021/08/22)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.1.7から1.1.8(2021/08/22)
+-------------------------------------------------------
 .. error:: 
-
-  ModuleNotFoundError: No module named 'crashtest.inspector'
+  | ModuleNotFoundError: No module named 'crashtest.inspector'
 
 .. hint::
-  | %USERPROFILE%\.poetry フォルダを削除し、推奨手順で再インストールしたら復旧できました。
+  | 復旧手順 = 前回同様で復旧
+
+.. note:: 
   | issueが出てますね。修正待ちです。
   | https://github.com/python-poetry/poetry/issues/2681
+
+1.1.8から1.1.9(2021/09/19)
+-------------------------------------------------------
+.. error:: （記録ミス…）
+
+.. hint::
+  | 復旧手順 = 前回同様で復旧
 
 .. |date| date::
