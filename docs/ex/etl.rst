@@ -12,9 +12,9 @@ ETLとは
 
 参考リンク
 =================
-* `AWS Glue <https://aws.amazon.com/jp/glue/>`_ 
-* `Azure Data Factory <https://azure.microsoft.com/ja-jp/services/data-factory/>`_ 
-* `Dataflow <https://cloud.google.com/dataflow>`_ 
+* `公式AWS Glue <https://aws.amazon.com/jp/glue/>`_ 
+* `公式Azure Data Factory <https://azure.microsoft.com/ja-jp/services/data-factory/>`_ 
+* `公式Dataflow <https://cloud.google.com/dataflow>`_ 
 
 
 

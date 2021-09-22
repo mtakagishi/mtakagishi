@@ -36,3 +36,4 @@ Buzz
   :maxdepth: 2
 
   etl
+  data-factory
