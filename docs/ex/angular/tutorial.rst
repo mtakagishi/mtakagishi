@@ -490,6 +490,7 @@ ngIfで分岐を追加
 
   </div>
 
+
 これで、初期状態でformがなく、選択するとformが表示されるようになる。
 
 .. figure:: /ex/angular/if-selected.png
