@@ -22,6 +22,7 @@ Buzz
   spa/index
   es/index
   angular/index
+  mendix/about-mendix
 
 ソース管理
 ------------------------
@@ -30,7 +31,7 @@ Buzz
 
   git/index
 
-データ加工
+ETL
 ------------------------
 .. toctree::
   :maxdepth: 2
