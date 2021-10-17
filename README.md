@@ -9,7 +9,6 @@
 
 ## URL
 
-* "https://mtakagishi.tk/"
 * "https://jolly-brown-b98547.netlify.app/"
 
 ## poetry準備
