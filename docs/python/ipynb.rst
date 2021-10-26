@@ -1,7 +1,7 @@
 *********************************************
 ipynbが開けないときの対処方法
 *********************************************
-Last Updated on |date|
+Last Updated on 2021-10-26
 
 * ipynb拡張子は、jupyterのファイルです。
 * 端末を変えたり、しばらく放置すると、開き方を忘れて読めなくてハマります。
@@ -26,10 +26,23 @@ Last Updated on |date|
 
 これで既定のブラウザでjupyterが開くのでipynbが参照できる。
 
-補足
-================
+追加モジュールメモ
+==========================
 numpy pandasも欲しくなるがpython3.9.0では不整合が起きて下記バージョン指定で対応したメモ
 * poetry add numpy@^1.19.4 pandas@^1.1.4 matplotlib
 
+pandasメモ
+====================
+NAという文字列をNAとして扱う
+  keep_default_na=False
+Windowsで改行をLFにしたい　
+  line_terminator='\n'
+Shift_JISで扱いたい
+  encoding='cp932'
+csvのformat
+  quoting=csv.QUOTE_ALL
+  quoting=csv.QUOTE_MINIMAL
+  quoting=csv.QUOTE_NONNUMERIC
+quoting=csv.QUOTE_NONE
 
 .. |date| date::
