@@ -26,4 +26,10 @@ Last Updated on |date|
 
 これで既定のブラウザでjupyterが開くのでipynbが参照できる。
 
+補足
+================
+numpy pandasも欲しくなるがpython3.9.0では不整合が起きて下記バージョン指定で対応したメモ
+* poetry add numpy@^1.19.4 pandas@^1.1.4 matplotlib
+
+
 .. |date| date::
