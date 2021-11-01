@@ -38,6 +38,10 @@ httpでcloneして後からsshに変更したい場合
 
   git config --global core.autoCRLF false
 
+gitメモ
+  conflict
+    競合があるとローカルファイルに競合した箇所が記述されているので手動で直す
+  
 
 
 

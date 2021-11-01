@@ -95,7 +95,7 @@ poetry self update 履歴
   | ModuleNotFoundError: No module named 'msgpack.exceptions'
 
 .. hint::
-  | 復旧手順
+  | 更新手順
 
   * %USERPROFILE%\.poetry フォルダを削除
   * 推奨手順のインストールを実行
@@ -108,7 +108,7 @@ poetry self update 履歴
   | ModuleNotFoundError: No module named 'crashtest.inspector'
 
 .. hint::
-  | 復旧手順 = 前回同様で復旧
+  | 更新手順 = 前回同様で復旧
 
 .. note:: 
   | issueが出てますね。修正待ちです。
@@ -116,9 +116,18 @@ poetry self update 履歴
 
 1.1.8から1.1.9(2021/09/19)
 -------------------------------------------------------
-.. error:: （記録ミス…）
+.. hint::
+  | 更新手順 = 前回同様で復旧
+
+1.1.9から1.1.11(2021/11/2)
+-------------------------------------------------------
+.. error:: 
+  $ ModuleNotFoundError: No module named 'cleo'
+  が発生するようになったのでアップデート
 
 .. hint::
-  | 復旧手順 = 前回同様で復旧
+  | 更新手順 = 前回同様で復旧
+
+
 
 .. |date| date::
