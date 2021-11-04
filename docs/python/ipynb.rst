@@ -43,6 +43,16 @@ csvのformat
   quoting=csv.QUOTE_ALL
   quoting=csv.QUOTE_MINIMAL
   quoting=csv.QUOTE_NONNUMERIC
-quoting=csv.QUOTE_NONE
+  quoting=csv.QUOTE_NONE
+重複行の削除
+  df.drop_duplicates()
+
+to_csvで分割::
+  
+  k = 10000  # 1DataFrameあたりの行数
+  dfs = [df.loc[i:i+k-1, :] for i in range(0, len(df), k)]
+  for i, df_i in enumerate(dfs):
+    fname = str(i) + ".csv"
+    df_i.to_csv(fname)
 
 .. |date| date::

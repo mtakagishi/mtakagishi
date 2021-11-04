@@ -605,6 +605,13 @@ menu
 
 :menuselection:`Title --> Title2` 
 
+
+Docstringの記法
+=================================
+Docstringの記法にはreStructuredTextスタイル，Numpyスタイル，Googleスタイルの3つ
+
+
+
 .. rubric:: 注釈
 
 .. [#markdown-vs-rst] https://postd.cc/restructuredtext-vs-markdown-for-technical-documentation/
