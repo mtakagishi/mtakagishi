@@ -1,7 +1,6 @@
 ******************
 Python
 ******************
-Pythonへ挑戦中
 
 .. toctree::
   :maxdepth: 1
