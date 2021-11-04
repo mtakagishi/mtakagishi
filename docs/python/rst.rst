@@ -378,13 +378,43 @@ False  False  False     False
 True   False  True      False
 =====  =====  ========  =======
 
+Docstringの記法
+=================================
+Docstringの記法にはreStructuredTextスタイル，Numpyスタイル，Googleスタイルの3つ
+
+
 ディレクティブ
 =================================
 プログラミングでは「指示」を示す言葉として使われる。Sphinxでは指示のあるブロック
 
-スニペット
-=================================
-VSCODE拡張の reStructuredText によるスニペット紹介
+toctree
+--------------------------------
+* Table of contentsの略
+* 利用禁止ドキュメント名
+
+  * genindex
+  * modindex
+  * search
+  * _(アンダースコア) で始まる名前
+
+ディレクティブ表記::
+
+  .. toctree::
+    :maxdepth: 2
+    :numbered:
+    :caption: caption text
+    :name: name text
+    :titlesonly:
+    :glob:
+    :hidden:
+    :includehidden:
+
+    intro
+    All about strings <strings>
+    datatypes
+    intro*
+    recipe/*
+
 
 code
 ------------------------------------
@@ -605,11 +635,11 @@ menu
 
 :menuselection:`Title --> Title2` 
 
-
-Docstringの記法
+スニペット
 =================================
-Docstringの記法にはreStructuredTextスタイル，Numpyスタイル，Googleスタイルの3つ
+VSCODE拡張の reStructuredText でスニペットがある。以下リンクで確認可能
 
+`reStructuredtextスニペット <https://github.com/vscode-restructuredtext/vscode-restructuredtext/blob/master/snippets/snippets.json>`_ 
 
 
 .. rubric:: 注釈
