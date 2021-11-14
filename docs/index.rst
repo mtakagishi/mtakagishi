@@ -3,9 +3,8 @@ mtakagishiの学習ノート
 ########################################################
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
+  :glob:
   
-  python/index
-  vscode/index
-  ex/index
+  */index
   about
