@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'mtakagishi'
+project = 'note.mtakagishi'
 copyright = '2021, mtakagishi'
 author = 'mtakagishi'
 
@@ -60,7 +60,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
 html_favicon = "_static/favicon.ico"
-html_logo = "_static/logo.png"
+# html_logo = "_static/logo.png"
 html_theme_options = {
     "github_url": "https://github.com/mtakagishi/mtakagishi",
     "twitter_url": "https://twitter.com/mtakagishi",

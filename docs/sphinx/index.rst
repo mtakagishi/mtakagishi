@@ -1,14 +1,13 @@
 #################################################
-Sphinx拡張設定
+sphinx
 #################################################
 Last Updated on 2021-08-14
 
 .. toctree::
   :maxdepth: 1
-  
-  markdown
-  todo
-  analytics
-  sphinx-sitemap
+  :glob:
+
+  *
+  */index
 
 .. |date| date::

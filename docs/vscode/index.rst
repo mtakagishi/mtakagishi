@@ -5,11 +5,9 @@ Last Updated on 2021-08-28
 
 .. toctree::
   :maxdepth: 1
+  :glob:
   
-  why-vscode
-  install-vscode
-  textInputFocus
-  editorFocus
-  textReturnDisplay
+  about-vscode
+  *
 
 .. |date| date::

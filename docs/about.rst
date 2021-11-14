@@ -21,7 +21,7 @@ Google Analyticsでは「Cookie」を使用し、個人を特定する情報を�
 
 お問い合わせ  
 ================================
-.. todo:: 問合せができる機能を検討する
+`お問い合わせ <https://forms.gle/hcTfUTSB6UDdzdTy5>`_ 
 
 
 .. |date| date::
