@@ -250,7 +250,7 @@ VSCODE拡張から Table Formatter をインストール
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | 変換前の書式はサンプルに記載
-| :kbd:`Ctrl + P` から『Table: Format Current』
+| :kbd:`Ctrl + Shift + P` から『Table: Format Current』
 
 グリッド
 -------------------------------
