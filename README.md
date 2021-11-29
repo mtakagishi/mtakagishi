@@ -10,7 +10,7 @@
 
 ## URL
 
-* [home](https://mtakagishi.com)
+* [index](https://mtakagishi.com)
 * [ノート](https://note.mtakagishi.com)
 * [ゆる言語学ラジオメモ](https://yurugengo.mtakagishi.com)
 
