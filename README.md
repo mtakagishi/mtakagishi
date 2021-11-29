@@ -9,7 +9,9 @@
 
 ## URL
 
-* "https://jolly-brown-b98547.netlify.app/"
+* [home](https://mtakagishi.com)
+* [ノート](https://note.mtakagishi.com)
+* [ゆる言語ラジオメモ](https://yurugengo.mtakagishi.com)
 
 ## poetry準備
 
