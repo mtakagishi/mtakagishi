@@ -12,7 +12,7 @@
 
 * [home](https://mtakagishi.com)
 * [ノート](https://note.mtakagishi.com)
-* [ゆる言語ラジオメモ](https://yurugengo.mtakagishi.com)
+* [ゆる言語学ラジオメモ](https://yurugengo.mtakagishi.com)
 
 ## poetry準備
 
