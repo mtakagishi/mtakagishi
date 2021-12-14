@@ -10,9 +10,9 @@
 
 ## URL
 
-* [index](https://mtakagishi.com)
-* [ノート](https://note.mtakagishi.com)
-* [ゆる言語学ラジオメモ](https://yurugengo.mtakagishi.com)
+* [mtakagishi.com](https://mtakagishi.com)
+* [note.mtakagishi.com](https://note.mtakagishi.com)
+* [yurugengo.mtakagishi.com](https://yurugengo.mtakagishi.com)
 
 ## poetry準備
 
