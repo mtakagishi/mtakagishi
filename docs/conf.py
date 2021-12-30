@@ -33,7 +33,9 @@ html_last_updated_fmt = '%Y/%m/%d'
 extensions = [
     'sphinx.ext.todo',
     'recommonmark',
-    'sphinx_sitemap'
+    'sphinx_sitemap',
+    'sphinxnotes.strike',
+    'sphinxcontrib.blockdiag',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,6 +69,11 @@ html_theme_options = {
     # "google_analytics_id": "UA-183061927-2",
     "navbar_end": ["navbar-icon-links.html"],
     "footer_items": ["copyright"],
+    "external_links": [
+        {"name": "ゆる言語学ラジオメモ",
+         "url": "https://yurugengo.mtakagishi.com"},
+        {"name": "ノート", "url": "https://note.mtakagishi.com"}
+    ]
 }
 html_sidebars = {
     "**": []
@@ -83,3 +90,7 @@ source_suffix = {
 # sphinx-sitemap
 html_baseurl = 'https://mtakagishi.com/'
 html_extra_path = ['robots.txt']
+
+# blockdiag
+blockdiag_html_image_format = 'SVG'
+blockdiag_fontpath = 'docs/ipaexg.ttf'
