@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'mtakagishi'
-copyright = '2021, mtakagishi'
+copyright = '2022, mtakagishi'
 author = 'mtakagishi'
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
@@ -72,7 +72,7 @@ html_theme_options = {
     "external_links": [
         {"name": "ゆる言語学ラジオメモ",
          "url": "https://yurugengo.mtakagishi.com"},
-        {"name": "ノート", "url": "https://note.mtakagishi.com"}
+        {"name": "ノート", "url": "https://mtakagishi.com"}
     ]
 }
 html_sidebars = {
@@ -88,7 +88,7 @@ source_suffix = {
     '.md': 'markdown',
 }
 # sphinx-sitemap
-html_baseurl = 'https://mtakagishi.com/'
+html_baseurl = 'https://mtakagishi.netlify.app/'
 html_extra_path = ['robots.txt']
 
 # blockdiag
