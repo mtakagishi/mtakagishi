@@ -10,7 +10,7 @@
 
 ## URL
 
-* [mtakagsihi]](https://mtakagishi.netlify.app)
+* [mtakagsihi](https://mtakagishi.netlify.app)
 * [ノート](https://mtakagishi.com)
 * [ゆる言語学ラジオメモ](https://yurugengo.mtakagishi.com)
 
