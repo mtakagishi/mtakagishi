@@ -12,6 +12,7 @@
 
 * [mtakagsihi](https://mtakagishi.netlify.app)
 * [ノート](https://mtakagishi.com)
+* [dotfiles](https://github.com/mtakagishi/dotfiles)
 * [ゆる言語学ラジオメモ](https://yurugengo.mtakagishi.com)
 
 ## poetry準備
