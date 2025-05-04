@@ -10,10 +10,13 @@
 
 ## URL
 
-* [mtakagsihi](https://mtakagishi.netlify.app)
-* [ノート](https://mtakagishi.com)
-* [dotfiles](https://github.com/mtakagishi/dotfiles)
-* [ゆる言語学ラジオメモ](https://yurugengo.mtakagishi.com)
+| URL | Status |
+| ---- | ---- |
+| [mtakagsihi](https://mtakagishi.netlify.app) | [![mtakagishi Status](https://api.netlify.com/api/v1/badges/6b829839-ee1a-4297-9a33-e6895ae33b64/deploy-status)](https://app.netlify.com/sites/mtakagishi/deploys) |
+| [ブログ](https://mtakagishi.com) | [![mtakagishi.com Status](https://api.netlify.com/api/v1/badges/cf669616-af9c-424e-bd66-d00fe89e9420/deploy-status)](https://app.netlify.com/sites/jolly-brown-b98547/deploys) |
+| [ゆる言語学ラジオメモ](https://yurugengo.mtakagishi.com) | [![yurugengo.com Status](https://api.netlify.com/api/v1/badges/40cc72d1-7f75-49f3-9b39-c8081ad8cc64/deploy-status)](https://app.netlify.com/sites/compassionate-allen-469116/deploys) |
+| [dotfiles](https://github.com/mtakagishi/dotfiles) | [![dotfiles Status](https://github.com/mtakagishi/dotfiles/actions/workflows/dotfiles-ci.yml/badge.svg)](https://github.com/mtakagishi/dotfiles/actions/workflows/dotfiles-ci.yml) |
+
 
 ## poetry準備
 
